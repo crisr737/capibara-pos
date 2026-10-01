@@ -158,7 +158,7 @@ android.accept_sdk_license = True
 #android.add_activites = com.example.YourActivity
 
 # (str) python-for-android branch to use, defaults to stable
-p4a.branch = master
+p4a.branch = develop
 
 # (str) OUYA Console category. Should be one of GAME or APP
 # If you leave this blank, OUYA support will not be enabled
