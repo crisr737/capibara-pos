@@ -1,0 +1,50 @@
+name: Build Kivy APK
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip \
+            autoconf libtool pkg-config zlib1g-dev libncurses-dev \
+            cmake libffi-dev libssl-dev libtinfo5
+
+      - name: Install Buildozer and Cython
+        run: |
+          pip install buildozer
+          pip install "cython==0.29.36"
+
+      - name: Verify buildozer.spec exists
+        run: |
+          if [ ! -f buildozer.spec ]; then
+            echo "ERROR: no existe buildozer.spec"
+            exit 1
+          fi
+          echo "buildozer.spec encontrado:"
+          head -20 buildozer.spec
+
+      - name: Build with Buildozer
+        run: |
+          export BUILDOZER_WARN_ON_ROOT=0
+          yes | buildozer -v android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: capibara-apk
+          path: bin/*.apk
+          retention-days: 30
