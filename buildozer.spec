@@ -36,7 +36,7 @@ version = 1.0
 
 # (list) Application requirements
 # IMPORTANTE: Estas son las dependencias de tu app Capibara POS
-requirements = python3,kivy==2.3.0,pyjnius,android
+requirements = python3==3.11.9,kivy==2.3.1,pyjnius,android
 
 # (str) Custom source folders for requirements
 # requirements.source.kivy = ../../kivy
