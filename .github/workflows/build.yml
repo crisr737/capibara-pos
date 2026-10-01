@@ -11,17 +11,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.11.9'
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip \
-            autoconf libtool pkg-config zlib1g-dev libncurses-dev \
-            cmake libffi-dev libssl-dev
+            autoconf libtool pkg-config zlib1g-dev libncurses5-dev \
+            libncursesw5-dev cmake libffi-dev libssl-dev
+
+      - name: Verify Python version
+        run: |
+          python --version
+          python3 --version
 
       - name: Install Buildozer and Cython
         run: |
@@ -34,8 +39,7 @@ jobs:
             echo "ERROR: no existe buildozer.spec"
             exit 1
           fi
-          echo "buildozer.spec encontrado:"
-          head -20 buildozer.spec
+          echo "buildozer.spec encontrado"
 
       - name: Build with Buildozer
         run: |
