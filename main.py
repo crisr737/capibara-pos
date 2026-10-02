@@ -601,7 +601,7 @@ class PantallaVender(Screen):
 
 
 # =====================================================================
-#  PANTALLA INVENTARIO (con EDITAR y nombre visible)
+#  PANTALLA INVENTARIO
 # =====================================================================
 class PantallaInventario(Screen):
 
@@ -995,7 +995,7 @@ class PantallaClientes(Screen):
 
 
 # =====================================================================
-#  PANTALLA DETALLE DE CLIENTE (con historial completo)
+#  PANTALLA DETALLE DE CLIENTE
 # =====================================================================
 class PantallaClienteDetalle(Screen):
 
@@ -1079,20 +1079,17 @@ class PantallaClienteDetalle(Screen):
                                         size_hint_y=None, height=40))
             return
 
-        # Mostrar cada movimiento en tarjeta con 3 lineas
         for m in reversed(c["historial"]):
             if m["tipo"] == "cargo":
                 signo, color, titulo = "+", TEMA["rojo"], "CARGO (FIADO)"
             else:
                 signo, color, titulo = "-", TEMA["verde"], "PAGO"
 
-            # Tarjeta con 3 filas
             tarjeta_mov = BoxLayout(orientation="vertical", spacing=2,
                                     size_hint_y=None, height=100,
                                     padding=(8, 6))
             pintar_fondo(tarjeta_mov, TEMA["tarjeta"])
 
-            # Fila 1: fecha + tipo
             fila1 = BoxLayout(orientation="horizontal",
                               size_hint_y=0.30)
             fecha_str = m.get("fecha_hora", m.get("fecha", ""))
@@ -1108,7 +1105,6 @@ class PantallaClienteDetalle(Screen):
             fila1.add_widget(lbl_tipo)
             tarjeta_mov.add_widget(fila1)
 
-            # Fila 2: detalle completo
             fila2 = BoxLayout(orientation="horizontal",
                               size_hint_y=0.42)
             detalle = m.get("detalle", "") or "(sin detalle)"
@@ -1120,7 +1116,6 @@ class PantallaClienteDetalle(Screen):
             fila2.add_widget(lbl_det)
             tarjeta_mov.add_widget(fila2)
 
-            # Fila 3: monto
             fila3 = BoxLayout(orientation="horizontal",
                               size_hint_y=0.28)
             lbl_monto = Label(text=f"{signo} {L(m['monto'])}",
