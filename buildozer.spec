@@ -153,10 +153,6 @@ android.allow_backup = True
 #p4a.port =
 
 
-[app:python3]
-p4a.python_modules = python3 -grp
-
-
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
