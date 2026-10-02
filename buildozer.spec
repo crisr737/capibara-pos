@@ -201,7 +201,6 @@ p4a.branch = develop
 #android.copy_libs = 1
 
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
-p4a.branch = develop
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
@@ -221,7 +220,6 @@ android.allow_backup = True
 #p4a.url =
 
 # (str) python-for-android branch to use, defaults to master
-#p4a.branch = master
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #p4a.source_dir =
