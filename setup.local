@@ -1,0 +1,7 @@
+# Módulos deshabilitados para Android (no soportados por Bionic libc)
+*disabled*
+grp
+spwd
+pwd
+nis
+ossaudiodev
