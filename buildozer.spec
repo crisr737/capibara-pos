@@ -33,6 +33,7 @@ version = 1.0
 # (list) Application requirements
 # IMPORTANTE: Estas son las dependencias de tu app Capibara POS
 requirements = hostpython3==3.11.9,python3==3.11.9,kivy==2.3.0,pyjnius,android
+p4a.setup_extra_args = --disable-grp --disable-spwd
 
 # (str) Custom source folders for requirements
 # requirements.source.kivy = ../../kivy
